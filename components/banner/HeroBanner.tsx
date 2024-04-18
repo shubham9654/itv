@@ -20,7 +20,7 @@ const HeroBanner = (props: Props) => {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="mx-auto max-w-[1440px] relative"
+      className="mb-12 relative "
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
