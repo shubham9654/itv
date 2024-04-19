@@ -14,7 +14,7 @@ import {
 
 type Props = {};
 
-const HeroBanner = (props: Props) => {
+const BannerCarousel = (props: Props) => {
   const plugin = React.useRef(Autoplay({ delay: 3000 }));
 
   return (
@@ -43,4 +43,4 @@ const HeroBanner = (props: Props) => {
   );
 };
 
-export default HeroBanner;
+export default BannerCarousel;

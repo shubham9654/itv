@@ -28,34 +28,21 @@ const MovieSearch = () => {
   const [inputValue, setInputValue] = useState("");
 
   const handleValueChange = (value: string) => {
+    
     setInputValue(value);
     setOpen(!!value);
   };
 
-  const filteredCommands = Array.isArray(commands)
-    ? commands.filter((command) =>
-        command.label.toLowerCase().includes(inputValue.toLowerCase())
-      )
-    : [];
-  
   return (
     <div className="relative">
-      <Command className="rounded-t-lg border shadow-md">
+      <Command className="rounded-t-lg border border-black shadow-md bg-black text-white">
         <CommandInput
-          placeholder="Type a command or search..."
+          placeholder="Search movie or show..."
           onValueChange={handleValueChange}
+          className="lg:w-[300px]"
         />
-        {
-          <CommandList className="rounded-b-lg absolute top-[46px] w-[244px] z-10 bg-white">
-            {open &&
-              filteredCommands.length > 0 &&
-              filteredCommands.map((command) => (
-                <CommandItem key={command.value} value={command.value}>
-                  {command.label}
-                </CommandItem>
-              ))}
-          </CommandList>
-        }
+
+        <CommandList className="rounded-b-lg absolute top-[46px] lg:w-[348px] z-10 bg-black hidden"></CommandList>
       </Command>
     </div>
   );
