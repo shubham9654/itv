@@ -1,18 +1,18 @@
 import MovieCard from "@/components/cards/MovieCard";
 import axios from "axios";
 
-export default async function SearchPage({
+export default async function WatchMovie({
   params,
 }: {
-  params: { search: string };
+  params: { id: string };
 }) {
   const { data } = await axios.get(
-    `https://v3.sg.media-imdb.com/suggestion/titles/x/${params.search}.json`
+    `https://getsuperembed.link/?video_id=${params.id}`
   );
 
   return (
     <div className="mx-auto mt-4 mb-16 max-w-[1440px] flex justify-center">
-      <div className="px-1.5 grid grid-cols-3 gap-1.5 md:flex flex-wrap">
+      <div className="flex flex-wrap">
       {data.d?.length > 0
         ? data.d.map((movie: any, index: Number) => (
             <MovieCard key={index} {...movie} />

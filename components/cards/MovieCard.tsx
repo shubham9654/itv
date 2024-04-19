@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 type Props = {
@@ -19,14 +20,16 @@ type Props = {
 
 const MovieCard = (props: Props) => {
   return (
-    <div className="mr-4">
-      <Image
-        alt=""
-        width={200}
-        height={266}
-        src={props.i?.imageUrl || ""}
-        className="rounded-[4px]"
-      />
+    <div className="md:mr-4 md:mb-4 cursor-pointer">
+      <Link href={`https://vidsrc.net/embed/${props.id}`} target="_blank">
+        <Image
+          alt=""
+          width={200}
+          height={266}
+          src={props.i?.imageUrl || ""}
+          className="rounded-[4px] aspect-auto"
+        />
+      </Link>
     </div>
   );
 };

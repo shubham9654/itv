@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Autoplay from "embla-carousel-autoplay";
+import Link from "next/link";
 
 import {
   Carousel,
@@ -11,6 +12,17 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+
+const bannerData = [
+  {
+    imdbId: "tt4154796",
+    image: "/banner3.jpeg",
+  },
+  {
+    imdbId: "tt2948372",
+    image: "/banner1.jpeg",
+  },
+];
 
 type Props = {};
 
@@ -25,15 +37,14 @@ const BannerCarousel = (props: Props) => {
       onMouseLeave={plugin.current.reset}
     >
       <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
+        {bannerData.map((el, index) => (
           <CarouselItem key={index} className="banner_shadow">
-            <Image
-              alt="banner1"
-              height={480}
-              width={1440}
-              src="https://cdn1.edgedatg.com/aws/v2/abc/AbbottElementary/showimages/ca1b90ddbac331b9dc20756a66253c6e/1440x480-Q80_ca1b90ddbac331b9dc20756a66253c6e.jpg"
-              
-            />
+            <Link
+              href={`https://vidsrc.net/embed/${el.imdbId}`}
+              target="_blank"
+            >
+              <Image alt="banner1" height={480} width={1440} src={el.image} />
+            </Link>
           </CarouselItem>
         ))}
       </CarouselContent>
