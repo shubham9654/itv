@@ -1,36 +1,23 @@
-"use client";
 
-import { useState } from "react";
+"use client"
+
+import { useRouter } from 'next/navigation';
 
 import {
   Command,
-  CommandEmpty,
-  CommandGroup,
   CommandInput,
-  CommandItem,
   CommandList,
 } from "@/components/ui/command";
 
-const commands = [
-  { value: "calendar", label: "Calendar" },
-  { value: "search-emoji", label: "Search Emoji" },
-  { value: "calculator", label: "Calculator" },
-  { value: "calendar", label: "Calendar" },
-  { value: "search-emoji", label: "Search Emoji" },
-  { value: "calculator", label: "Calculator" },
-  { value: "calendar", label: "Calendar" },
-  { value: "search-emoji", label: "Search Emoji" },
-  { value: "calculator", label: "Calculator" },
-];
-
 const MovieSearch = () => {
-  const [open, setOpen] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const router = useRouter()
 
   const handleValueChange = (value: string) => {
-    
-    setInputValue(value);
-    setOpen(!!value);
+    if (value) {
+      router.push(`/search/${value}`)
+    } else {
+      router.push(`/`)
+    }
   };
 
   return (
